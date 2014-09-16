@@ -1,26 +1,24 @@
 package uk.co.amberservices.AdventureModel;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
 	
 	private String name;
-	private List<Item> inventory;
+	private Map<String, Item> inventory = null;
 	
 	public String getName() {
 		return name;
 	}
-	public List<Item> getInventory() {
+	public Map<String, Item> getInventory() {
 		return inventory;
 	}
-	public void setInventory(List<Item> inventory) {
-		this.inventory = inventory;
-	}
 	
-	public Player(String name, List<Item> inventory) {
+	public Player(String name) {
 		super();
 		this.name = name;
-		this.inventory = inventory;
+		this.inventory = new HashMap<String, Item>();
 	}
 
 }
