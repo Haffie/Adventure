@@ -20,6 +20,7 @@ public class AdventureDAO extends BaseDAO {
     final static String NEIGHBOURS = "neighbours";
     final static String DIRECTION = "direction";
     final static String PICKUP = "pickup";
+    final static String VERBS = "verbs";
     
 	private HashMap<Integer, Location> locations;
 	private HashMap<Integer, Item> items;
@@ -31,7 +32,7 @@ public class AdventureDAO extends BaseDAO {
 	}
     
     @SuppressWarnings("unchecked")
-	private HashMap<Integer, Item> getItems() {
+	public HashMap<Integer, Item> getItems() {
 
 		if (items == null) {
 			items = new HashMap<Integer, Item>();
@@ -47,8 +48,18 @@ public class AdventureDAO extends BaseDAO {
 				final String description = (String) itemObject.get(DESCRIPTION);
 				final String details = (String)itemObject.get(DETAILS);
 				final Boolean pickup = Boolean.valueOf((String)itemObject.get(PICKUP));
-
+				
 				item = new Item(id, name, description, details, pickup);
+				if (itemObject.containsKey(VERBS))
+				{
+					List<String> verbs = (List<String>)itemObject.get(VERBS);
+					for (String verb : verbs)
+					{
+						item.getAssociatedVerbs().add(verb);
+					}
+				}
+
+				
 				items.put(id, item);
 			}
 		}

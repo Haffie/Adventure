@@ -18,12 +18,16 @@ public class GameUtil {
 		this.location = location;
 	}
 	
-	public void showHelp(Set<String> verbs)
+	public void showHelp(Set<String> verbs, Map<String, Map<String, Item>> verbItems)
 	{
 		System.out.println("You can use the following verbs: ");
 		for (String verb : verbs) 
 		{
 			System.out.print(verb + " ");
+		}
+		for (Map.Entry<String, Map<String, Item>> itemVerbEntries : verbItems.entrySet()) 
+		{
+			System.out.print(itemVerbEntries.getKey() + " ");
 		}
 	}
 
@@ -81,7 +85,7 @@ public class GameUtil {
 			}
 			else if (!item.isPickup())
 			{
-				System.out.println("You cannot pick up the " + noun.toLowerCase());
+				System.out.println("You cannot take the " + noun.toLowerCase());
 			}
 			else
 			{

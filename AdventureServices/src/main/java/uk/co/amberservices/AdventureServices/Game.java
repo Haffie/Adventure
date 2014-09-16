@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import uk.co.amberservices.AdventureModel.Item;
 import uk.co.amberservices.AdventureModel.Location;
 import uk.co.amberservices.AdventureModel.Player;
 import uk.co.amberservices.AdventurePersistence.AdventureDAO;
@@ -15,6 +16,7 @@ public class Game {
 
 	private Integer id;
 	private Map<Integer, Location> locations;
+	private Map<Integer, Item> allItems;
 	private Player player;
 
 	public Integer getId() {
@@ -32,7 +34,7 @@ public class Game {
 		this.player = player;
 		AdventureDAO adventureDao = new AdventureDAO(adventureName);
 		this.locations = adventureDao.getLocations();
-		// this.items = new AdventureDAO(adventureName).getItems();
+		this.allItems = adventureDao.getItems();
 	}
 
 	public static void main(String[] args) {
@@ -46,7 +48,7 @@ public class Game {
 
 	public void play() {
 		Location location = this.locations.get(1);
-		Parser parser = new Parser(location, player);
+		Parser parser = new Parser(location, player, allItems);
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String text;

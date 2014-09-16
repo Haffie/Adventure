@@ -1,5 +1,8 @@
 package uk.co.amberservices.AdventureModel;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Item {
 
 	private Integer id;
@@ -7,6 +10,11 @@ public class Item {
 	private String description;
 	private String details;
 	private boolean pickup;
+	private Set<String> associatedVerbs = new HashSet<String>();
+	
+	
+	//private Location location
+	//private Player player;
 	
 	public Integer getId() {
 		return id;
@@ -36,6 +44,15 @@ public class Item {
 		super();
 		this.id = id;
 	}
+	public boolean isPickup() {
+		return pickup;
+	}
+	public void setPickup(boolean pickup) {
+		this.pickup = pickup;
+	}
+	public Set<String> getAssociatedVerbs() {
+		return associatedVerbs;
+	}
 	public Item(Integer id, String name, String description, String details, boolean pickup) {
 		super();
 		this.id = id;
@@ -44,11 +61,4 @@ public class Item {
 		this.details = details;
 		this.pickup = pickup;
 	}
-	public boolean isPickup() {
-		return pickup;
-	}
-	public void setPickup(boolean pickup) {
-		this.pickup = pickup;
-	}
-	
 }
