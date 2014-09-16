@@ -6,6 +6,7 @@ public class Item {
 	private String name;
 	private String description;
 	private String details;
+	private boolean pickup;
 	
 	public Integer getId() {
 		return id;
@@ -35,12 +36,19 @@ public class Item {
 		super();
 		this.id = id;
 	}
-	public Item(Integer id, String name, String description, String details) {
+	public Item(Integer id, String name, String description, String details, boolean pickup) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.details = details;
+		this.pickup = pickup;
+	}
+	public boolean isPickup() {
+		return pickup;
+	}
+	public void setPickup(boolean pickup) {
+		this.pickup = pickup;
 	}
 	
 }
