@@ -19,6 +19,7 @@ public class AdventureDAO extends BaseDAO {
     final static String DESCRIPTION = "description";
     final static String NEIGHBOURS = "neighbours";
     final static String DIRECTION = "direction";
+    final static String PICKUP = "pickup";
     
 	private HashMap<Integer, Location> locations;
 	private HashMap<Integer, Item> items;
@@ -45,8 +46,9 @@ public class AdventureDAO extends BaseDAO {
 				final String name = (String)itemObject.get(NAME);
 				final String description = (String) itemObject.get(DESCRIPTION);
 				final String details = (String)itemObject.get(DETAILS);
+				final Boolean pickup = Boolean.valueOf((String)itemObject.get(PICKUP));
 
-				item = new Item(id, name, description, details);
+				item = new Item(id, name, description, details, pickup);
 				items.put(id, item);
 			}
 		}
